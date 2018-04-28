@@ -2,8 +2,8 @@ class NLPService
 	#binding.pry
 	#export GOOGLE_APPLICATION_CREDENTIALS="/key.json"
 
-	PROJECTID = "spatial-skein-202517"
-	KEYFILE   = "key.json"
+	#PROJECTID = "spatial-skein-202517"
+	#KEYFILE   = "key.json"
 
 	# Explicitly use service account credentials by specifying the private key
 	# file.
@@ -26,13 +26,14 @@ class NLPService
   	#binding.pry
 
 	# Instantiates a client
-	language = Google::Cloud::Language.new project_id:PROJECTID, keyfile:KEYFILE
+	language = Google::Cloud::Language.new 
 
 	# The text to analyze
 	text = "Hello, world!"
 
 	# Detects the sentiment of the text
-	response = language.analyze_sentiment content: text, type: :PLAIN_TEXT
+	#response = language.analyze_sentiment content: text, type: :PLAIN_TEXT
+	response = language.analyze_entities content: text, type: :PLAIN_TEXT
 
 	# Get document sentiment from response
 	sentiment = response.document_sentiment
