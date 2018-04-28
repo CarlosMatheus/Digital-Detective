@@ -17,6 +17,12 @@ Things you may want to cover:
 
 * How to run the test suite
 
+* Set .env file:
+
+Create .env file on root project's directory with: 
+GOOGLE_APPLICATION_CREDENTIALS = "path to this project/key.json"
+
+
 * Services (job queues, cache servers, search engines, etc.)
 
 * Deployment instructions
