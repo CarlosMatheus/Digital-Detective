@@ -59,3 +59,9 @@ end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
+
+# Added at 2018-04-28 22:09:50 -0300 by ericpqmor:
+gem "facebook-messenger", "~> 1.0"
+
+# Added at 2018-04-28 22:22:13 -0300 by ericpqmor:
+gem "dotenv", "~> 2.4"

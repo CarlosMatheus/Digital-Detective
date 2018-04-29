@@ -77,6 +77,9 @@ GEM
       multi_json
     erubi (1.7.1)
     execjs (2.7.0)
+    facebook-messenger (1.0.0)
+      httparty (~> 0.13, >= 0.13.7)
+      rack (>= 1.6.4)
     faraday (0.13.1)
       multipart-post (>= 1.2, < 3)
     ffi (1.9.23)
@@ -110,6 +113,8 @@ GEM
       googleapis-common-protos-types (~> 1.0.0)
       googleauth (>= 0.5.1, < 0.7)
     hashie (3.5.7)
+    httparty (0.16.2)
+      multi_xml (>= 0.5.2)
     i18n (1.0.1)
       concurrent-ruby (~> 1.0)
     jbuilder (2.7.0)
@@ -135,6 +140,7 @@ GEM
     mini_portile2 (2.3.0)
     minitest (5.11.3)
     multi_json (1.13.1)
+    multi_xml (0.6.0)
     multipart-post (2.0.0)
     mysql2 (0.3.21)
     nio4r (2.3.0)
@@ -245,7 +251,9 @@ DEPENDENCIES
   byebug
   capybara (~> 2.13)
   coffee-rails (~> 4.2)
+  dotenv (~> 2.4)
   dotenv-rails
+  facebook-messenger (~> 1.0)
   google-cloud-language
   jbuilder (~> 2.5)
   listen (>= 3.0.5, < 3.2)
