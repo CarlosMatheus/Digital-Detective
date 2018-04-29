@@ -16,7 +16,10 @@
   <h1><%= true_or_fake %></h1>
   <%= image_tag "#{result_image}.jpg" %>
   <% if link.present? %>
-    <p>Você pode encontrar mais informações nesse link: <%= link_to link, link %></p>
+    <p>
+      <h4>Você pode encontrar mais informações nesse link: </h4>
+      <%= link_to link, link %>
+    </p>
   <% end %>
   <div class="fb-button-row">
     <div class="fb-share-button" data-href="<%= query_url( query: params[:query] ) %>" data-layout="button" data-size="large" data-mobile-iframe="true"><a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=<%= query_url( query: params[:query] ) %>&amp;src=sdkpreparse" class="fb-xfbml-parse-ignore">Compartilhar</a></div>
