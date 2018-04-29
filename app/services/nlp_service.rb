@@ -118,59 +118,61 @@ class NLPService
     "to do"
   end
 
-  def self.audio_to_text()
-    # # Your Google Cloud Platform project ID
-    project_id = "spatial-skein-202517"
-    # # binding.pry
-    # # Instantiates a client
-    # speech = Google::Cloud::Speech.new project: project_id
+  # def self.audio_to_text()
+  #   # Your Google Cloud Platform project ID
+  #   project_id = "spatial-skein-202517"
+  #   # binding.pry
+  #   # Instantiates a client
+  #   speech = Google::Cloud::Speech.new project: project_id
 
-    # # The name of the audio file to transcribe
-    local_file_path = Rails.root.join("app", "assets", "audio_files", "WhatsApp Audio 2018-03-28 at 9.43.22 AM.mpeg")
+  #   # The name of the audio file to transcribe
+  #   file_name = Rails.root.join("app", "assets", "audio_files", "WhatsApp Audio 2018-03-21 at 8.19.30 PM.ogg")
 
-    # # The audio file's encoding and sample rate
-    # audio = speech.audio file_name, encoding:    :linear16,
-    #                                 sample_rate: 16000,
-    #                                 language:    "pt-BR"
+  #   # The audio file's encoding and sample rate
+  #   audio = speech.audio file_name, encoding:    :OGG_OPUS  ,
+  #                                   sample_rate: 16000,
+  #                                   language:    "pt-BR"
 
-    # # Detects speech in the audio file
-    # results = audio.recognize
+  #   # Detects speech in the audio file
+  #   results = audio.recognize
+  #   # binding.pry 
+  #   # Each result represents a consecutive portion of the audio
+  #   results.each do |result|
+  #     puts "Transcription: #{result.transcript}"
+  #   end
 
-    # # Each result represents a consecutive portion of the audio
-    # results.each do |result|
-    #   puts "Transcription: #{result.transcript}"
-    # end
-    # project_id   = "Your Google Cloud project ID"
-    # storage_path = "Path to file in Cloud Storage, eg. gs://bucket/audio.raw"
-    storage_file_path = "audio_files/"
-    file = upload(local_file_path, storage_file_path)
-    speech = Google::Cloud::Speech.new project: project_id
-    audio  = speech.audio file, encoding:    :linear16, sample_rate: 16000, language:    "en-US"
 
-    operation = audio.process
+  #   # project_id   = "Your Google Cloud project ID"
+  #   # storage_path = "Path to file in Cloud Storage, eg. gs://bucket/audio.raw"
+  #   # storage_file_path = "audio_files/"  
+  #   # file = upload(local_file_path, storage_file_path)
+  #   # speech = Google::Cloud::Speech.new project: project_id
+  #   # audio  = speech.audio file, encoding:    :linear16, sample_rate: 16000, language:    "en-US"
 
-    puts "Operation started"
+  #   # operation = audio.process
 
-    operation.wait_until_done!
+  #   # puts "Operation started"
 
-    results = operation.results
+  #   # operation.wait_until_done!
 
-    results.each do |result|
-      puts "Transcription: #{result.transcript}"
-    end
-  end
+  #   # results = operation.results
 
-  def self.upload(local_file_path, storage_file_path)
-    project_id = "spatial-skein-202517"
-    bucket_name       = "audio_files_bucket_bucket"
-    # local_file_path   = "Path to local file to upload"
-    # storage_file_path = "audio_files/"
-    storage = Google::Cloud::Storage.new project: project_id
-    bucket  = storage.bucket bucket_name
-    file = bucket.create_file local_file_path, storage_file_path
-    puts "Uploaded #{file.name}"
-    return file
-  end
+  #   # results.each do |result|
+  #   #   puts "Transcription: #{result.transcript}"
+  #   # end
+  # end
+
+  # def self.upload(local_file_path, storage_file_path)
+  #   project_id = "spatial-skein-202517"
+  #   bucket_name       = "audio_files_bucket_bucket"
+  #   # local_file_path   = "Path to local file to upload"
+  #   # storage_file_path = "audio_files/"
+  #   storage = Google::Cloud::Storage.new project: project_id
+  #   bucket  = storage.bucket bucket_name
+  #   file = bucket.create_file local_file_path, storage_file_path
+  #   puts "Uploaded #{file.name}"
+  #   return file
+  # end
 
 end
 
