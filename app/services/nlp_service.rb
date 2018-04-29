@@ -49,7 +49,7 @@ class NLPService
       end
     end
     hash2.each do |key, valeu|
-      val2 += value
+      val2 += valeu
       if hash1[key] == nil
         hash1[key]=0
       end
@@ -59,7 +59,15 @@ class NLPService
       c += hash1[key] * hash2[key]
     end
     # c =  Math.sqrt(c)
+<<<<<<< HEAD
     d=Math.sqrt(Math.sqrt(Math.abs(val1 + val2)/val2))
+=======
+    if val2 > 0
+      d=Math.sqrt(Math.sqrt((val1 + val2).abs/val2))
+    else
+      d=val1/2
+    end
+>>>>>>> 0c241a307357a5c86f347ceb8964ebc81e5724e0
     return c*d/((mod_hash(hash1)*mod_hash(hash2)))
   end
 
@@ -121,7 +129,7 @@ class NLPService
   end
 
   def self.add_to_database(text)
-    "to do"
+    nil
   end
 
   def self.audio_to_text()
@@ -141,7 +149,6 @@ class NLPService
 
     # Detects speech in the audio file
     results = audio.recognize
-    # binding.pry 
     # Each result represents a consecutive portion of the audio
     results.each do |result|
       puts "Transcription: #{result.transcript}"
@@ -150,7 +157,7 @@ class NLPService
 
   #   # project_id   = "Your Google Cloud project ID"
   #   # storage_path = "Path to file in Cloud Storage, eg. gs://bucket/audio.raw"
-  #   # storage_file_path = "audio_files/"  
+  #   # storage_file_path = "audio_files/"
   #   # file = upload(local_file_path, storage_file_path)
   #   # speech = Google::Cloud::Speech.new project: project_id
   #   # audio  = speech.audio file, encoding:    :linear16, sample_rate: 16000, language:    "en-US"
