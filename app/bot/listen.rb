@@ -17,21 +17,18 @@ Bot.on :message do |message|
   story = NLPService.check_content(message.text, news_list, facts_list)
 
   if story.present?
-	if story.fact_id.present?
-		fact = Fact.find story.fact_id
-		if fact.fake
-			text = "Eh fake! #{fact.link}"
-		else
-			text = "Eh verdade! #{fact.link}"
-		end
-	else
-		neel = New.find story.new_id
-		text = "Nao tenho certeza... mas encontei essa noticia! #{neel.link}"
-	end
+    if story.is_a? Fact
+      if story.fake
+        text = "Eh fake! #{story.link}"
+      else
+        text = "Eh verdade! #{story.link}"
+      end
+    else
+      text = "Nao tenho certeza... mas encontei essa noticia! #{story.link}"
+    end
   else
-	text = "Nao encontrei nada. Se eu encontrar vou te avisar!"
+    text = "Nao encontrei nada. Se eu encontrar vou te avisar!"
   end
-
 
   Bot.deliver({
     recipient: message.sender,
