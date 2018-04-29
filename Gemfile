@@ -34,6 +34,8 @@ gem 'jbuilder', '~> 2.5'
 # gem 'capistrano-rails', group: :development
 
 gem 'google-cloud-language'
+gem 'google-cloud-speech'
+gem 'google-cloud-storage'
 gem 'searchkick' 
 
 gem 'mysql2', '~> 0.3.18'
