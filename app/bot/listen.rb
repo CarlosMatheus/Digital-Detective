@@ -14,7 +14,7 @@ Facebook::Messenger::Subscriptions.subscribe(access_token: ENV["ACCESS_TOKEN"])
 Bot.on :message do |message|
   news_list = NewsService.get_news
   facts_list = FactsService.get_facts
-  story = NLPService.check_content(message.text, news_list, facts, list)
+  story = NLPService.check_content(message.text, news_list, facts_list)
 
   if story.present?
 	if story.fact_id.present?
@@ -31,7 +31,7 @@ Bot.on :message do |message|
   else
 	text = "Nao encontrei nada. Se eu encontrar vou te avisar!"
   end
-		
+
 
   Bot.deliver({
     recipient: message.sender,
