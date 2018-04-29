@@ -19,19 +19,21 @@ Bot.on :message do |message|
   if story.present? and story != 'to do'
     if story.is_a? Fact
       if story.fake
-        text = "Eh fake! #{story.link}"
+        text = "O resultado da investigação chegou. A notícia é FALSA! Tome cuidado com as fontes que você confia na internet\n Encontrei uma reportagem que desmente o boato:  #{story.link}"
       else
-        text = "Eh verdade! #{story.link}"
+        text = "O resultado da investigação chegou. A notícia é VERDADEIRA! Fique tranquilo que a notícia é verdadeira\n Encontrei uma reportagem que confirma a história:  #{story.link}"
       end
     else
-      text = "Nao tenho certeza... mas encontei essa noticia! #{story.link}"
+      text = "Infelizmente, não existem provas suficientes para eu chegar em um resultado conclusivo...\n Porém, encontrei uma pista que pode ser útil:  #{story.link}"
     end
   else
-    text = "Nao encontrei nada. Se eu encontrar vou te avisar!"
+    text = "Infelizmente, não encontrei nada. Porém, o Detetive Bot nunca falha! Continuarei pesquisando e irei lhe avisar assim que chegar num resultado conclusivo."
   end
 
-  if message.text.downcase == "oi" || message.text.downcase == "ola"
-    text = "Olá, eu sou o Detetive Bot!"
+  if message.text.downcase =~ /oi/ || message.text.downcase =~ /ola/ || message.text.downcase =~ /olá/
+    text = "Olá, eu sou o Detetive Bot, o melhor do pedaço! Posso te ajudar a identificar qualquer notícia falsa, só mandar."
+  elsif message.text.downcase =~ /bom dia/ || message.text.downcase =~ /boa tarde/ || message.text.downcase =~ /boa noite/
+    text = message.text + ", eu sou o Detetive Bot, o melhor do pedaço! Posso te ajudar a identificar qualquer notícia falsa, só mandar."
   end
 
   Bot.deliver({
