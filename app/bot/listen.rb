@@ -49,9 +49,9 @@ Bot.on :message do |message|
   end
 
   if message.text.gsub(/[^a-zA-Z0-9\-]/,"").downcase == "oi" || message.text.gsub(/[^a-zA-Z0-9\-]/,"").downcase == "ola" || message.text.gsub(/[^a-zA-Z0-9\-]/,"").downcase == "olá"
-    text = "Olá, eu sou o Detetive Bot, o melhor do pedaço! Posso te ajudar a identificar qualquer notícia falsa, só mandar."
+    text = "Olá, eu sou o Detetive Digital, o melhor do pedaço! Posso te ajudar a identificar qualquer notícia falsa, só mandar."
   elsif message.text.gsub(/[^a-zA-Z0-9\-]/,"").downcase == "bom dia" || message.text.gsub(/[^a-zA-Z0-9\-]/,"").downcase == "boa tarde" || message.text.gsub(/[^a-zA-Z0-9\-]/,"").downcase == "boa noite"
-    text = message.text + ", eu sou o Detetive Bot, o melhor do pedaço! Posso te ajudar a identificar qualquer notícia falsa, só mandar."
+    text = message.text + ", eu sou o Detetive Digital, o melhor do pedaço! Posso te ajudar a identificar qualquer notícia falsa, só mandar."
   end
 
   Bot.deliver({
