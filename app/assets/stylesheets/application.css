@@ -13,3 +13,23 @@
  *= require_tree .
  *= require_self
  */
+
+body {
+  display: flex;
+  height: 100vh;
+  width: 100vw;
+  align-items: center;
+  justify-content: center;
+}
+
+.query-area, .subject-area {
+  width: 800px;
+  height: 600px;
+  text-align: center;
+}
+
+
+.subject-area {
+  margin-top: 50px;
+  align-self: flex-start;
+}
