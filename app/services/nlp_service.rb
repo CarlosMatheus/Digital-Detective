@@ -62,7 +62,7 @@ class NLPService
     if val2 > 0
       d=Math.sqrt(Math.sqrt((val1 + val2).abs/val2))
     else
-      d=val1/2
+      d=1
     end
     return c*d/((mod_hash(hash1)*mod_hash(hash2)))
   end
@@ -145,7 +145,6 @@ class NLPService
 
     # Detects speech in the audio file
     results = audio.recognize
-    # binding.pry
     # Each result represents a consecutive portion of the audio
     results.each do |result|
       puts "Transcription: #{result.transcript}"
