@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>DetetiveVirtual</title>
+    <title>DetetiveVirtual <%= (@true_or_fake.present? ? " - #{@true_or_fake}" : '') %> </title>
     <%= csrf_meta_tags %>
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+
+    <%= yield :meta_tags %>
   </head>
 
   <body>
