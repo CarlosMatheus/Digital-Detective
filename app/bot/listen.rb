@@ -11,10 +11,28 @@ Facebook::Messenger::Subscriptions.subscribe(access_token: ENV["ACCESS_TOKEN"])
 # message.sent_at     # => 2016-04-22 21:30:36 +0200
 # message.text        # => 'Hello, bot!'
 
+def get_text(query)
+
+  if query.strip =~ /^(http|https):\/\/[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,5}(:[0-9]{1,5})?(\/.*)?$/ix
+    require 'open-uri'
+
+    begin
+      html = Nokogiri::HTML(open(query))
+
+      html.xpath('//p').text
+    rescue
+      raise ActionController::RoutingError.new('Not Found') if Rails.env.development?
+      redirect_to root_url
+    end
+  else
+    query
+  end
+end
+
 Bot.on :message do |message|
   news_list = NewsService.get_news
   facts_list = FactsService.get_facts
-  story = NLPService.check_content(message.text, news_list, facts_list)
+  story = NLPService.check_content( get_text(message.text), news_list, facts_list)
 
   if story.present? and story != 'to do'
     if story.is_a? Fact

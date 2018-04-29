@@ -51,7 +51,6 @@ news_xml.xpath('//item').each do |item|
 
 end
 
-
 # Mandioca mata
 story = Story.create()
 
@@ -63,7 +62,7 @@ html = Nokogiri::HTML(open(link))
 
 text = html.xpath('//p').text
 
-fact = Fact.create(link: link, text: text, subject_id: subject.id)
+fact = Fact.create(link: link, text: text, subject_id: subject.id, fake: true)
 
 story.fact_id = fact.id
 story.save
