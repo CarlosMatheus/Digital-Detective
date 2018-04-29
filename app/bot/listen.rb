@@ -30,9 +30,9 @@ Bot.on :message do |message|
     text = "Infelizmente, não encontrei nada. Porém, o Detetive Bot nunca falha! Continuarei pesquisando e irei lhe avisar assim que chegar num resultado conclusivo."
   end
 
-  if message.text.downcase =~ /oi/ || message.text.downcase =~ /ola/ || message.text.downcase =~ /olá/
+  if message.text.downcase =~ "oi" || message.text.downcase =~ "ola" || message.text.downcase =~ "olá"
     text = "Olá, eu sou o Detetive Bot, o melhor do pedaço! Posso te ajudar a identificar qualquer notícia falsa, só mandar."
-  elsif message.text.downcase =~ /bom dia/ || message.text.downcase =~ /boa tarde/ || message.text.downcase =~ /boa noite/
+  elsif message.text.downcase =~ "bom dia" || message.text.downcase =~ "boa tarde" || message.text.downcase =~ "boa noite"
     text = message.text + ", eu sou o Detetive Bot, o melhor do pedaço! Posso te ajudar a identificar qualquer notícia falsa, só mandar."
   end
 
