@@ -66,11 +66,10 @@ class NLPService
     end
     c=0
     hash1.each do |key, valeu|
-      if total_dic[key] == nil
-        binding.pry
+      if total_dic[key] != nil
+        factor = (1 - (total_dic[key] / total))
+        c += hash1[key] * hash2[key] * (factor**25)
       end
-      factor = (1 - (total_dic[key] / total))
-      c += hash1[key] * hash2[key] * (factor**25)
     end
     # c =  Math.sqrt(c)
     if val2 > 0
