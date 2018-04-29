@@ -59,15 +59,11 @@ class NLPService
       c += hash1[key] * hash2[key]
     end
     # c =  Math.sqrt(c)
-<<<<<<< HEAD
-    d=Math.sqrt(Math.sqrt(Math.abs(val1 + val2)/val2))
-=======
     if val2 > 0
       d=Math.sqrt(Math.sqrt((val1 + val2).abs/val2))
     else
-      d=val1/2
+      d=1
     end
->>>>>>> 0c241a307357a5c86f347ceb8964ebc81e5724e0
     return c*d/((mod_hash(hash1)*mod_hash(hash2)))
   end
 
