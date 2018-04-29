@@ -115,7 +115,7 @@ class NLPService
   end
 
   def self.add_to_database(text)
-    "to do"
+    nil
   end
 
   # def self.audio_to_text()
@@ -135,7 +135,7 @@ class NLPService
 
   #   # Detects speech in the audio file
   #   results = audio.recognize
-  #   # binding.pry 
+  #   # binding.pry
   #   # Each result represents a consecutive portion of the audio
   #   results.each do |result|
   #     puts "Transcription: #{result.transcript}"
@@ -144,7 +144,7 @@ class NLPService
 
   #   # project_id   = "Your Google Cloud project ID"
   #   # storage_path = "Path to file in Cloud Storage, eg. gs://bucket/audio.raw"
-  #   # storage_file_path = "audio_files/"  
+  #   # storage_file_path = "audio_files/"
   #   # file = upload(local_file_path, storage_file_path)
   #   # speech = Google::Cloud::Speech.new project: project_id
   #   # audio  = speech.audio file, encoding:    :linear16, sample_rate: 16000, language:    "en-US"
