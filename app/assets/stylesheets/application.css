@@ -22,8 +22,14 @@ body {
   justify-content: center;
 }
 
-.query-area {
+.query-area, .subject-area {
   width: 800px;
   height: 600px;
   text-align: center;
+}
+
+
+.subject-area {
+  margin-top: 50px;
+  align-self: flex-start;
 }

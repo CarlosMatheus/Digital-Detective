@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   root 'home#index'
 
   get 'query/' => 'query#index', as: :query
+  get 'i/' => 'subject#index', as: :subject
 
   mount Facebook::Messenger::Server, at:"bot"
 end

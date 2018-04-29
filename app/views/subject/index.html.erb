@@ -1,0 +1,16 @@
+<div class="subject-area">
+
+  <table>
+    <tr>
+      <th class="text-center">
+        Assuntos mais falados e ainda não checkados:
+      </th>
+    </tr>
+    <% subjects.each do |subject| %>
+      <tr>
+        <td> <%= subject.title %> </td>
+      </tr>
+    <% end %>
+  </table>
+
+</div>
