@@ -10,7 +10,7 @@ class NLPService
     dunno: 3
   }
 
-  def self.get_hash(text)
+  def self.get_hash(text, total_dic)
     letter_to_remove = [",", ".","!","'","\"",":", ";", "?","[","]","{","}","(",")","/"]
   for letter in letter_to_remove
     text = text.remove(letter)
@@ -27,6 +27,11 @@ class NLPService
     else
       dic[word] += 1
     end
+    if total_dic[word] == nil
+      total_dic[word] = 1
+    else 
+      total_dic[word] += 1
+    end
   end
 
   remove_words = ["o", "a", "um", "uma", "para"]
@@ -39,9 +44,14 @@ class NLPService
   return dic
   end
 
-  def self.cossin(hash1, hash2)
+  def self.cossin(hash1, hash2, total_dic)
     val1 = 0
     val2 = 0
+    total = 0
+    total_dic.each do |key, value|
+      total += value
+    end
+
     hash1.each do |key, valeu|
       val1 += valeu
       if hash2[key] == nil
@@ -56,7 +66,8 @@ class NLPService
     end
     c=0
     hash1.each do |key, valeu|
-      c += hash1[key] * hash2[key]
+      factor = (1 - total_dic[key] / total)
+      c += hash1[key] * hash2[key] * (factor**25)
     end
     # c =  Math.sqrt(c)
     if val2 > 0
@@ -92,9 +103,10 @@ class NLPService
     max = 0
     n = ""
 
+    total_dic = {}
     for news in news_list
-      dic = get_hash(news.text)
-      cos = cossin(dic_text, dic)
+      dic = get_hash(news.text, total_dic)
+      cos = cossin(dic_text, dic, total_dic)
       if cos > max
         max = cos
         n = news
@@ -105,17 +117,18 @@ class NLPService
       return n
     else
       max = 0
+      total_dic = {}
       fact = ""
       for fact_check in fact_check_list
-        dic = get_hash(fact_check.text)
-        cos = cossin(dic_text, dic)
+        dic = get_hash(fact_check.text, total_dic)
+        cos = cossin(dic_text, dic, total_dic)
         if cos > max
           max = cos
           fact = fact_check
         end
       end
 
-      if max > 0.56
+      if max > 0.5
         return fact
       else
         add_to_database(text)
