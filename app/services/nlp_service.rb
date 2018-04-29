@@ -95,7 +95,6 @@ class NLPService
         n = news
       end
     end
-
     if max > 0.5
       return n
     else
@@ -110,7 +109,7 @@ class NLPService
         end
       end
 
-      if max > 0.5
+      if max > 0.56
         return fact
       else
         add_to_database(text)
