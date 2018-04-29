@@ -3,7 +3,7 @@
 require "facebook/messenger"
 
 include Facebook::Messenger
-include Rails.application.routes.url_helpers
+
 
 Facebook::Messenger::Subscriptions.subscribe(access_token: ENV["ACCESS_TOKEN"])
 
@@ -36,15 +36,15 @@ Bot.on :message do |message|
   story = NLPService.check_content( get_text(message.text), news_list, facts_list)
 
   if story.present? and story != 'to do'
-    link = story.link
+    link = "https://gigio.ninja/query/?query=" + story.link
     if story.is_a? Fact
       if story.fake
-        text = "O resultado da investigação chegou. A notícia é FALSA! Tome cuidado com as fontes que você confia na internet\n Encontrei uma reportagem que desmente o boato:  #{link_to query_url(query: link)}"
+        text = "O resultado da investigação chegou. A notícia é FALSA! Tome cuidado com as fontes que você confia na internet\n Encontrei uma reportagem que desmente o boato:  #{link}"
       else
-        text = "O resultado da investigação chegou. A notícia é VERDADEIRA! Fique tranquilo que a notícia é verdadeira\n Encontrei uma reportagem que confirma a história:  #{link_to query_url(query: link)}"
+        text = "O resultado da investigação chegou. A notícia é VERDADEIRA! Fique tranquilo que a notícia é verdadeira\n Encontrei uma reportagem que confirma a história:  #{link}"
       end
     else
-      text = "Infelizmente, não existem provas suficientes para eu chegar em um resultado conclusivo...\n Porém, encontrei uma pista que pode ser útil:  #{link_to query_url(query: link)}"
+      text = "Infelizmente, não existem provas suficientes para eu chegar em um resultado conclusivo...\n Porém, encontrei uma pista que pode ser útil:  #{link}"
     end
   else
     text = "Infelizmente, não encontrei nada. Porém, o Detetive Bot nunca falha! Continuarei pesquisando e irei lhe avisar assim que chegar num resultado conclusivo."
