@@ -103,35 +103,35 @@ class NLPService
     dic_text = get_hash(text, total_dic)
 
     max = 0
-    n = ""
-
     total_dic = {}
-    for news in news_list
-      dic = get_hash(news.text, total_dic)
+    fact = ""
+    for fact_check in fact_check_list
+      dic = get_hash(fact_check.text, total_dic)
       cos = cossin(dic_text, dic, total_dic)
       if cos > max
         max = cos
-        n = news
+        fact = fact_check
       end
     end
 
-    if max > 0.5
-      return n
+    if max > 0.55
+      return fact
     else
       max = 0
+      n = ""
+
       total_dic = {}
-      fact = ""
-      for fact_check in fact_check_list
-        dic = get_hash(fact_check.text, total_dic)
+      for news in news_list
+        dic = get_hash(news.text, total_dic)
         cos = cossin(dic_text, dic, total_dic)
         if cos > max
           max = cos
-          fact = fact_check
+          n = news
         end
       end
 
-      if max > 0.5
-        return fact
+      if max > 0.55
+        return n
       else
         add_to_database(text)
       end
