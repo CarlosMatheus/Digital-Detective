@@ -59,7 +59,7 @@ class NLPService
       c += hash1[key] * hash2[key]
     end
     # c =  Math.sqrt(c)
-    d=Math.sqrt(Math.sqrt(Math.abs(val1 + val2)/val2)
+    d=Math.sqrt(Math.sqrt(Math.abs(val1 + val2)/val2))
     return c*d/((mod_hash(hash1)*mod_hash(hash2)))
   end
 
@@ -87,6 +87,7 @@ class NLPService
 
     max = 0
     n = ""
+
     for news in news_list
       dic = get_hash(news.text)
       cos = cossin(dic_text, dic)
@@ -95,6 +96,7 @@ class NLPService
         n = news
       end
     end
+
     if max > 0.5
       return n
     else
