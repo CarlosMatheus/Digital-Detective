@@ -27,6 +27,7 @@ Bot.on :message do |message|
 	else
 		neel = New.find story.new_id
 		text = "Nao tenho certeza... mas encontei essa noticia! #{neel.link}"
+	end
   else
 	text = "Nao encontrei nada. Se eu encontrar vou te avisar!"
   end
