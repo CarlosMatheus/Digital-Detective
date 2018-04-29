@@ -16,7 +16,7 @@ Bot.on :message do |message|
   facts_list = FactsService.get_facts
   story = NLPService.check_content(message.text, news_list, facts_list)
 
-  if story.present? and story !== 'to do'
+  if story.present? and story != 'to do'
     if story.is_a? Fact
       if story.fake
         text = "Eh fake! #{story.link}"
