@@ -59,7 +59,7 @@ class NLPService
       c += hash1[key] * hash2[key]
     end
     # c =  Math.sqrt(c)
-    d=Math.sqrt(Math.sqrt(Math.abs(val1 + val2)/val2)
+    d=Math.sqrt(Math.sqrt(Math.abs(val1 + val2)/val2))
     return c*d/((mod_hash(hash1)*mod_hash(hash2)))
   end
 
@@ -86,32 +86,33 @@ class NLPService
     dic_text = get_hash(text)
 
     max = 0
-    fact = ""
-    for fact_check in fact_check_list
-      dic = get_hash(fact_check.text)
+    n = ""
+
+    for news in news_list
+      dic = get_hash(news.text)
       cos = cossin(dic_text, dic)
       if cos > max
         max = cos
-        fact = fact_check
+        n = news
       end
     end
 
     if max > 0.5
-      return fact
+      return n
     else
       max = 0
-      n = ""
-      for news in news_list
-        dic = get_hash(news.text)
+      fact = ""
+      for fact_check in fact_check_list
+        dic = get_hash(fact_check.text)
         cos = cossin(dic_text, dic)
         if cos > max
           max = cos
-          n = news
+          fact = fact_check
         end
       end
 
-      if max > 0.5
-        return n
+      if max > 0.56
+        return fact
       else
         add_to_database(text)
       end
@@ -123,28 +124,28 @@ class NLPService
     "to do"
   end
 
-  # def self.audio_to_text()
-  #   # Your Google Cloud Platform project ID
-  #   project_id = "spatial-skein-202517"
-  #   # binding.pry
-  #   # Instantiates a client
-  #   speech = Google::Cloud::Speech.new project: project_id
+  def self.audio_to_text()
+    # Your Google Cloud Platform project ID
+    project_id = "spatial-skein-202517"
+    # binding.pry
+    # Instantiates a client
+    speech = Google::Cloud::Speech.new project: project_id
 
-  #   # The name of the audio file to transcribe
-  #   file_name = Rails.root.join("app", "assets", "audio_files", "WhatsApp Audio 2018-03-21 at 8.19.30 PM.ogg")
+    # The name of the audio file to transcribe
+    file_name = Rails.root.join("app", "assets", "audio_files", "WhatsApp Audio 2018-03-21 at 8.19.30 PM.ogg")
 
-  #   # The audio file's encoding and sample rate
-  #   audio = speech.audio file_name, encoding:    :OGG_OPUS  ,
-  #                                   sample_rate: 16000,
-  #                                   language:    "pt-BR"
+    # The audio file's encoding and sample rate
+    audio = speech.audio file_name, encoding:    :OGG_OPUS  ,
+                                    sample_rate: 16000,
+                                    language:    "pt-BR"
 
-  #   # Detects speech in the audio file
-  #   results = audio.recognize
-  #   # binding.pry 
-  #   # Each result represents a consecutive portion of the audio
-  #   results.each do |result|
-  #     puts "Transcription: #{result.transcript}"
-  #   end
+    # Detects speech in the audio file
+    results = audio.recognize
+    # binding.pry 
+    # Each result represents a consecutive portion of the audio
+    results.each do |result|
+      puts "Transcription: #{result.transcript}"
+    end
 
 
   #   # project_id   = "Your Google Cloud project ID"
@@ -165,7 +166,7 @@ class NLPService
   #   # results.each do |result|
   #   #   puts "Transcription: #{result.transcript}"
   #   # end
-  # end
+  end
 
   # def self.upload(local_file_path, storage_file_path)
   #   project_id = "spatial-skein-202517"
