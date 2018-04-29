@@ -97,8 +97,8 @@ class NLPService
     # text7="O BANCO CENTRAL acabou de anunciar: a conta de energia elétrica terá mais um reajuste, dessa vez de 37%, e a gasolina de 14%. Vejam que absurdo! O reajuste será aplicado a partir da próxima semana. A imprensa foi comprada para não noticiar o novo reajuste abusivo. Próxima sexta haverá uma paralisação geral! CHEGA DE TANTO ROUBO!!! Se você repassar para mais 7 pessoas ou 3 grupos, conseguiremos mobilizar esse pais e esse canalha safado do temer vai cancelar esse reajuste absurdo."
 
     # binding.pry
-
-    dic_text = get_hash(text)
+    total_dic = {}
+    dic_text = get_hash(text, total_dic)
 
     max = 0
     n = ""
