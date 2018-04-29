@@ -3,6 +3,7 @@
 require "facebook/messenger"
 
 include Facebook::Messenger
+include Rails.application.routes.url_helpers
 
 Facebook::Messenger::Subscriptions.subscribe(access_token: ENV["ACCESS_TOKEN"])
 
