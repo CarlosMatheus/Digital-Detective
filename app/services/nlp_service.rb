@@ -49,7 +49,7 @@ class NLPService
       end
     end
     hash2.each do |key, valeu|
-      val2 += value
+      val2 += valeu
       if hash1[key] == nil
         hash1[key]=0
       end
@@ -59,7 +59,11 @@ class NLPService
       c += hash1[key] * hash2[key]
     end
     # c =  Math.sqrt(c)
-    d=Math.sqrt(Math.sqrt(Math.abs(val1 + val2)/val2))
+    if val2 > 0
+      d=Math.sqrt(Math.sqrt((val1 + val2).abs/val2))
+    else
+      d=val1/2
+    end
     return c*d/((mod_hash(hash1)*mod_hash(hash2)))
   end
 
