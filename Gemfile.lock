@@ -85,7 +85,7 @@ GEM
       rack (>= 1.6.4)
     faraday (0.13.1)
       multipart-post (>= 1.2, < 3)
-    ffi (1.9.23)
+    ffi (1.11.1)
     globalid (0.4.1)
       activesupport (>= 4.2.0)
     google-api-client (0.19.8)
